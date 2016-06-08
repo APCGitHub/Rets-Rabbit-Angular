@@ -1,0 +1,25 @@
+{
+  "name": "rets-rabbit-angular",
+  "description": "This is an angular module which provides several factories and services to interface with the Retsrabbit V2 API",
+  "main": "index.js",
+  "authors": [
+    "Andrew Clinton <aclinton@anecka.com>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "angular",
+    "rets",
+    "RESO",
+    "data",
+    "dictionary",
+    "rest"
+  ],
+  "homepage": "https://github.com/Anecka/Rets-Rabbit-Angular",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
