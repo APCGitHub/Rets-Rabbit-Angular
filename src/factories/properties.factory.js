@@ -5,9 +5,9 @@
 		.module('rets-rabbit-angular.factory.properties', [])
 		.factory('PropertyFactory', Factory);
 
-	Factory.$inject = ['$http', '$q', 'ApiProvider'];
+	Factory.$inject = ['$http', '$q', 'ApiConfig'];
 
-	function Factory($http, $q, ApiProvider) {
+	function Factory($http, $q, ApiConfig) {
 		var factory = {
 			search: _search,
 			findOne: _findOne
@@ -18,7 +18,7 @@
 		function _search(query) {
 			var deferred = $q.defer();
 
-			$http.get(ApiProvider.apiUrl + 'property', {
+			$http.get(ApiConfig.apiUrl + 'property', {
 				params: query
 			})
 			.success(function (res){
@@ -34,7 +34,7 @@
 		function _findOne(id, request){
 			var deferred = $q.defer();
 			
-			$http.get(ApiProvider.apiUrl + 'property/' + id, {
+			$http.get(ApiConfig.apiUrl + 'property/' + id, {
 				params: request
 			})
 			.success(function (res){

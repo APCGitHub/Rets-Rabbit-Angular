@@ -5,9 +5,9 @@
 		.module('rets-rabbit-angular.factory.auth', [])
 		.factory('RRAuthFactory', Factory);
 
-	Factory.$inject = ['$http', '$q', '$window', 'ApiProvider'];
+	Factory.$inject = ['$http', '$q', '$window', 'ApiConfig'];
 
-	function Factory($http, $q, $window, ApiProvider) {
+	function Factory($http, $q, $window, ApiConfig) {
 		var factory = {
 			getToken: _getToken
 		};
@@ -19,10 +19,10 @@
 
 			$http({
 				method: 'POST',
-				url: ApiProvider.baseUrl + 'api/oauth/access_token',
+				url: ApiConfig.baseUrl + 'api/oauth/access_token',
 				data: {
-					client_id: ApiProvider.clientId,
-					client_secret: ApiProvider.clientSecret,
+					client_id: ApiConfig.clientId,
+					client_secret: ApiConfig.clientSecret,
 					grant_type: 'credentials'
 				}
 			}).success(function (res){
