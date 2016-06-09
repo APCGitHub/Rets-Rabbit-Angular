@@ -17,9 +17,10 @@
 
 		function _search(query) {
 			var deferred = $q.defer();
+			var encoded_query = encodeURIComponent(query);
 
 			$http.get(ApiConfig.apiUrl + 'property', {
-				params: query
+				params: encoded_query
 			})
 			.success(function (res){
 				var listings = res.value;
