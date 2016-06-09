@@ -23,7 +23,7 @@
 				data: {
 					client_id: ApiConfig.clientId,
 					client_secret: ApiConfig.clientSecret,
-					grant_type: 'credentials'
+					grant_type: 'client_credentials'
 				}
 			}).success(function (res){
 				var token = res.token;
