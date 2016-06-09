@@ -22,7 +22,7 @@
 			console.log('encoded query: ' + encoded_query);
 
 			$http.get(ApiConfig.apiUrl + 'property', {
-				params: encoded_query,
+				params: query,
 				headers: {
 					Authorization: 'Bearer ' + $window.localStorage.getItem('token')
 				}
