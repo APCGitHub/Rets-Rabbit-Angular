@@ -32,7 +32,7 @@
 				deferred.reject(err);
 			});
 
-			return deferred;
+			return deferred.promise;
 		}
 	}
 })();
