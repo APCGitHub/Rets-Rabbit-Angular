@@ -19,7 +19,7 @@
 
 			$http({
 				method: 'POST',
-				url: ApiProvider.apiUrl + 'oauth/access_token',
+				url: ApiProvider.baseUrl + 'api/oauth/access_token',
 				data: {
 					client_id: ApiProvider.clientId,
 					client_secret: ApiProvider.clientSecret,
