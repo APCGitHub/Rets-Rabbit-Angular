@@ -29,10 +29,12 @@
 			return deferred.promise;
 		}
 
-		function _findOne(id){
+		function _findOne(id, request){
 			var deferred = $q.defer();
 			
-			$http.get(ApiProvider.apiUrl + 'property/' + id)
+			$http.get(ApiProvider.apiUrl + 'property/' + id, {
+				params: request
+			})
 			.success(function (res){
 				var listing = res.value;
 				deferred.resolve(listing);
