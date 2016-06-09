@@ -9,14 +9,19 @@
 
 	function Provider() {
 		var config = {
-			baseUrl: '',
-			apiEndPoint: '',
+			baseUrl: 'http://stage.retsrabbit.com/',
+			apiEndPoint: 'api/v2/',
 			clientId: '',
 			clientSecret: ''
 		},
 		provider = {
 			setBaseUrl: function (url){
+				if(url === '')
+					return;
+
 				config.baseUrl = url;
+				if(config.baseUrl[config.baseUrl.length - 1] !== '/')
+					config.baseUrl += '/';
 			},
 			setApiEndPoint: function (endpoint){
 				config.api = endpoint;
@@ -30,8 +35,7 @@
 			$get: function () {
 				return {
 					baseUrl: config.baseUrl,
-					apiEndPoint: config.apiEndPoint,
-					apiUrl: config.baseUrl + config.apiEndPoint;
+					apiUrl: config.baseUrl + config.apiEndPoint,
 					clientId: config.clientId,
 					clientSecret: config.clientSecret
 				}

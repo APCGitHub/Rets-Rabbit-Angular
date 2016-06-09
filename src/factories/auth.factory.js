@@ -5,9 +5,9 @@
 		.module('rets-rabbit-angular.factory.auth', [])
 		.factory('AuthFactory', Factory);
 
-	Factory.$inject = ['$http', '$q', '$window'];
+	Factory.$inject = ['$http', '$q', '$window', 'ApiProvider'];
 
-	function Factory($http, $q, $window) {
+	function Factory($http, $q, $window, ApiProvider) {
 		var factory = {
 			getToken: _getToken
 		};
@@ -19,10 +19,10 @@
 
 			$http({
 				method: 'POST',
-				url: Constants.apiUrl + 'oauth/access_token',
+				url: ApiProvider.apiUrl + 'oauth/access_token',
 				data: {
-					client_id: Constants.clientId,
-					client_secret: Constants.clientSecret,
+					client_id: ApiProvider.clientId,
+					client_secret: ApiProvider.clientSecret,
 					grant_type: 'credentials'
 				}
 			}).success(function (res){
