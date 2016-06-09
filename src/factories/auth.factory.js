@@ -3,7 +3,7 @@
 
 	angular
 		.module('rets-rabbit-angular.factory.auth', [])
-		.factory('AuthFactory', Factory);
+		.factory('RRAuthFactory', Factory);
 
 	Factory.$inject = ['$http', '$q', '$window', 'ApiProvider'];
 
