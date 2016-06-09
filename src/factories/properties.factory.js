@@ -5,9 +5,9 @@
 		.module('rets-rabbit-angular.factory.properties', [])
 		.factory('PropertyFactory', Factory);
 
-	Factory.$inject = ['$http', '$q', 'ApiConfig'];
+	Factory.$inject = ['$http', '$q', '$window', 'ApiConfig'];
 
-	function Factory($http, $q, ApiConfig) {
+	function Factory($http, $q, $window, ApiConfig) {
 		var factory = {
 			search: _search,
 			findOne: _findOne
@@ -22,7 +22,10 @@
 			console.log('encoded query: ' + encoded_query);
 
 			$http.get(ApiConfig.apiUrl + 'property', {
-				params: encoded_query
+				params: encoded_query,
+				headers: {
+					Authorization: 'Bearer ' + $window.localStorage.getItem('token')
+				}
 			})
 			.success(function (res){
 				var listings = res.value;
@@ -38,7 +41,10 @@
 			var deferred = $q.defer();
 			
 			$http.get(ApiConfig.apiUrl + 'property/' + id, {
-				params: request
+				params: request,
+				headers: {
+					Authorization: 'Bearer ' + $window.localStorage.getItem('token')
+				}
 			})
 			.success(function (res){
 				var listing = res.value;
