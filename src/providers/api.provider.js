@@ -3,7 +3,7 @@
 
 	angular
 		.module('rets-rabbit-angular.provider.api', [])
-		.provider('ApiProvider', Provider);
+		.provider('ApiConfig', Provider);
 
 	Provider.$inject = [];
 
