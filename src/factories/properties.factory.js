@@ -18,7 +18,9 @@
 		function _search(query) {
 			var deferred = $q.defer();
 
-			$http.get(ApiProvider.apiUrl + 'property')
+			$http.get(ApiProvider.apiUrl + 'property', {
+				params: query
+			})
 			.success(function (res){
 				var listings = res.value;
 				deferred.resolve(listings);
