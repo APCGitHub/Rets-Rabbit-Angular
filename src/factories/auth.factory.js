@@ -26,8 +26,7 @@
 					grant_type: 'client_credentials'
 				}
 			}).success(function (res){
-				var token = res.token;
-				deferred.resolve(token);
+				deferred.resolve(res);
 			}).error(function (err){
 				deferred.reject(err);
 			});
