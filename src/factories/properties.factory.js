@@ -20,10 +20,10 @@
 			var deferred = $q.defer();
 			var encoded_query = encodeURIComponent(query);
 			console.log('encoded query: ' + encoded_query);
-
+			console.log('token: ' + $window.localStorage.getItem('token'));
 			$http.get(ApiConfig.apiUrl + 'property?' + encoded_query, {
 				headers: {
-					Authorization: 'Bearer ' + $window.localStorage.getItem('token')
+					"Authorization": 'Bearer ' + $window.localStorage.getItem('token')
 				}
 			})
 			.success(function (res){
