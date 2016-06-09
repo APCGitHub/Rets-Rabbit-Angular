@@ -21,8 +21,7 @@
 			var encoded_query = encodeURIComponent(query);
 			console.log('encoded query: ' + encoded_query);
 
-			$http.get(ApiConfig.apiUrl + 'property', {
-				params: query,
+			$http.get(ApiConfig.apiUrl + 'property?' + encoded_query, {
 				headers: {
 					Authorization: 'Bearer ' + $window.localStorage.getItem('token')
 				}
