@@ -8,7 +8,6 @@
   },
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-angular-templatecache": "^1.8.0",
     "gulp-concat": "^2.6.0",
     "gulp-filter": "^4.0.0",
     "gulp-order": "^1.1.1",

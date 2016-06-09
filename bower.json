@@ -5,6 +5,10 @@
   "authors": [
     "Andrew Clinton <aclinton@anecka.com>"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Anecka/Rets-Rabbit-Angular.git"
+  },
   "license": "ISC",
   "keywords": [
     "angular",
