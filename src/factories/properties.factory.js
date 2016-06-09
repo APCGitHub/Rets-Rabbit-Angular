@@ -28,8 +28,7 @@
 				}
 			})
 			.success(function (res){
-				var listings = res.value;
-				deferred.resolve(listings);
+				deferred.resolve(res);
 			}).error(function (err){
 				deferred.reject(err);
 			});
