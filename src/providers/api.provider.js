@@ -16,6 +16,7 @@
 		},
 		provider = {
 			setBaseUrl: function (url){
+				console.log('setting base url to: ' + url);
 				if(url === '')
 					return;
 
@@ -24,12 +25,15 @@
 					config.baseUrl += '/';
 			},
 			setApiEndPoint: function (endpoint){
+				console.log('setting api endpoint to: ' + endpoint);
 				config.api = endpoint;
 			},
 			setClientId: function (id){
+				console.log('setting client id to: ' + id);
 				config.clientId = id;
 			},
 			setClientSecret: function (secret){
+				console.log('setting client secret to: ' + secret);
 				config.clientSecret = secret;
 			},
 			$get: function () {
