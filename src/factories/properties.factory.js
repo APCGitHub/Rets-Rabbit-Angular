@@ -23,6 +23,7 @@
 			
 			$http.get(ApiConfig.apiUrl + 'property?' + query, {
 				headers: {
+					"Accept": "odata.metadata=full",
 					"Authorization": 'Bearer ' + $window.localStorage.getItem('token')
 				}
 			})
