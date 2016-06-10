@@ -9,7 +9,7 @@
 
 	function Provider() {
 		var config = {
-			baseUrl: 'http://stage.retsrabbit.com/',
+			baseUrl: 'https://stage.retsrabbit.com/',
 			apiEndPoint: 'api/v2/',
 			clientId: '',
 			clientSecret: ''
