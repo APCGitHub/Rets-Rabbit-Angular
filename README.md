@@ -62,7 +62,7 @@ This package comes with one provider:
 
 **ApiConfig**
 
-This provider has several setters which can be used to configure the service inside of a config block.
+This provider has several setters which can be used to configure the service inside of an angular **config** module.
 
 * **setBaseUrl**: Used to set the base url for querying. For example, *https://api.retsrabbit.com/*
 
@@ -71,6 +71,24 @@ This provider has several setters which can be used to configure the service ins
 * **setClientId**: Used to set the client_id which can be found under the **API** page on the Retsrabbit dashboard
 
 * **setClientSecret**: Used to set the client_secret which can be found under the **API** page on the Retsrabbit dashboard
+
+An example of using the setters can be seen below.
+
+*Make sure you suffix the provider with the "Provider" keyword when injecting into a config module so that angular knows you are using it as a Provider and not a service/factory.*
+
+```
+ApiConfigProvider.setBaseUrl("https://api.retsrabbit.com/");        ApiConfigProvider.setClientId("clientidgoeshere");
+ApiConfigProvider.setClientSecret("supersecretpassword");
+```
+The provider has several public getters which can be used to get api related information.
+
+* **baseUrl**: Just returns the base url set in the getter
+* **apiUrl**: Returns the base url plus the api endpoint
+* **clientId**: Returns the client_id
+* **clientSecret**: Returns the client_secret
+
+
+
 
 
 
