@@ -64,6 +64,14 @@ This package comes with one provider:
 
 This provider has several setters which can be used to configure the service inside of a config block.
 
+* **setBaseUrl**: Used to set the base url for querying. For example, *https://api.retsrabbit.com/*
+
+* **setApiEndPoint**: Used to set the specific versioning. For example, *api/v2*
+
+* **setClientId**: Used to set the client_id which can be found under the **API** page on the Retsrabbit dashboard
+
+* **setClientSecret**: Used to set the client_secret which can be found under the **API** page on the Retsrabbit dashboard
+
 
 
 
