@@ -77,7 +77,10 @@ An example of using the setters can be seen below.
 *Make sure you suffix the provider with the "Provider" keyword when injecting into a config module so that angular knows you are using it as a Provider and not a service/factory.*
 
 ```javascript
-ApiConfigProvider.setBaseUrl("https://api.retsrabbit.com/");        ApiConfigProvider.setClientId("clientidgoeshere");
+ApiConfigProvider.setBaseUrl("https://api.retsrabbit.com/");
+
+ApiConfigProvider.setClientId("clientidgoeshere");
+
 ApiConfigProvider.setClientSecret("supersecretpassword");
 ```
 The provider has several public getters which can be used to get api related information.
