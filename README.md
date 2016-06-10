@@ -6,7 +6,7 @@ This is an angular module which provides a variety of factories and services whi
 
 You can install this package via bower
 
-```
+```bash
 $ bower install rets-rabbit-angular
 ```
 
@@ -26,7 +26,7 @@ This factory has one publicly available method: **getToken**
 
 * **getToken**: returns a response from the Retsrabbit API containing an access_token
 
-```
+```javascript
 RRAuthFactory.getToken().then(function (res){
 	var token = res.access_token;
 	//do stuff with token
@@ -41,7 +41,7 @@ This factory has two publicly available methods: **search**, **findOne**
 
 * search: accepts an **unencoded** ODATA *query* string and returns the results from the server
 
-```
+```javascript
 var query = "$select=ListPrice, ListingId, OriginalListPrice&$filter=ListPrice gt OriginalListPrice&$orderby=ListPrice asc";
 
 PropertyFactory.search(query).then(function (res){
@@ -76,7 +76,7 @@ An example of using the setters can be seen below.
 
 *Make sure you suffix the provider with the "Provider" keyword when injecting into a config module so that angular knows you are using it as a Provider and not a service/factory.*
 
-```
+```javascript
 ApiConfigProvider.setBaseUrl("https://api.retsrabbit.com/");        ApiConfigProvider.setClientId("clientidgoeshere");
 ApiConfigProvider.setClientSecret("supersecretpassword");
 ```
