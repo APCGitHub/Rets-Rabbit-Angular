@@ -9,11 +9,47 @@
 
 	function Factory($http, $q, $window, ApiConfig) {
 		var factory = {
-			search: _search,
-			findOne: _findOne
+			findOne: _findOne,
+			metadata: _metadata,
+			search: _search
 		};
 
 		return factory;
+
+		function _findOne(id, request){
+			var deferred = $q.defer();
+			
+			$http.get(ApiConfig.apiUrl + 'property/' + id, {
+				params: request,
+				headers: {
+					Authorization: 'Bearer ' + $window.localStorage.getItem('token')
+				}
+			})
+			.success(function (res){
+				var listing = res.value;
+				deferred.resolve(listing);
+			}).error(function (err){
+				deferred.reject(err);
+			});
+
+			return deferred.promise;
+		}
+
+		function _metadata() {
+			var deferred = $q.defer();
+
+			$http.get(ApiConfig.apiUrl + 'property/$metadata', {
+				headers: {
+					Authorization: 'Bearer ' + $window.localStorage.getItem('token')
+				}
+			}).success(function (res){
+				deferred.resolve(res);
+			}).error(function (err){
+				deferred.reject(err);
+			});
+
+			return deferred.promise;
+		}
 
 		function _search(query) {
 			console.log('search query: ' + query);
@@ -29,25 +65,6 @@
 			})
 			.success(function (res){
 				deferred.resolve(res);
-			}).error(function (err){
-				deferred.reject(err);
-			});
-
-			return deferred.promise;
-		}
-
-		function _findOne(id, request){
-			var deferred = $q.defer();
-			
-			$http.get(ApiConfig.apiUrl + 'property/' + id, {
-				params: request,
-				headers: {
-					Authorization: 'Bearer ' + $window.localStorage.getItem('token')
-				}
-			})
-			.success(function (res){
-				var listing = res.value;
-				deferred.resolve(listing);
 			}).error(function (err){
 				deferred.reject(err);
 			});
