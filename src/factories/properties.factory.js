@@ -52,10 +52,10 @@
 		}
 
 		function _search(query) {
-			console.log('search query: ' + query);
+			//console.log('search query: ' + query);
 			var deferred = $q.defer();
 			var encoded_query = encodeURIComponent(query);
-			console.log('encoded query: ' + encoded_query);
+			//console.log('encoded query: ' + encoded_query);
 			
 			$http.get(ApiConfig.apiUrl + 'property?' + query, {
 				headers: {
