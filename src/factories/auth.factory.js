@@ -15,6 +15,7 @@
 		return factory;
 
 		function _getToken(){
+			console.log('getting a token????');
 			var deferred = $q.defer();
 
 			$http({
