@@ -27,6 +27,7 @@
 				}
 			}).success(function (res){
 				$window.localStorage.setItem('token', res.access_token);
+				console.log($window.localStorage.getItem('token'));
 				deferred.resolve(res);
 			}).error(function (err){
 				deferred.reject(err);
