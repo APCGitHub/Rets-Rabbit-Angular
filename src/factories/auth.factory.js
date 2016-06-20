@@ -15,7 +15,6 @@
 		return factory;
 
 		function _getToken(){
-			console.log('getting a token????');
 			var deferred = $q.defer();
 
 			$http({
@@ -27,7 +26,6 @@
 					grant_type: 'client_credentials'
 				}
 			}).success(function (res){
-				console.log('here');
 				$window.localStorage.setItem('token', res.access_token);
 				console.log($window.localStorage.getItem('token'));
 				deferred.resolve(res);
