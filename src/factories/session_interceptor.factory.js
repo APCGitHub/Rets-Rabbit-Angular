@@ -24,6 +24,9 @@
             console.log('the method');
             // Token has expired or some other Auth error
             if (response.status == 401) {
+                console.log('increasing error count');
+                error_count++;
+
                 var AuthService = $injector.get('RRAuthFactory');
                 var $http = $injector.get('$http');
                 var deferred = $q.defer();
@@ -42,9 +45,6 @@
                     return deferred.promise.then(function() {
                         error_count = 0;
                         return $http(response.config);
-                    }, function() {
-                        console.log('increasing error count');
-                        error_count++;
                     });
                 }
             }
