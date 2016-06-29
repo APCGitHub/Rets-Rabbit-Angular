@@ -8,6 +8,7 @@
     Factory.$inject = ['$injector', '$q'];
 
     function Factory($injector, $q) {
+        console.log('constructor');
         var error_count = 0;
         var max_error_count = 5;
 
@@ -20,6 +21,7 @@
         /* --- PUBLIC METHODS --- */
 
         function _responseError(response) {
+            console.log('the method');
             // Token has expired or some other Auth error
             if (response.status == 401) {
                 var AuthService = $injector.get('RRAuthFactory');
