@@ -30,7 +30,6 @@
 				console.log($window.localStorage.getItem('token'));
 				deferred.resolve(res);
 			}).error(function (err){
-				console.log('THERE IS THE ERROR BLOCK');
 				deferred.reject(err);
 			});
 

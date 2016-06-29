@@ -8,7 +8,6 @@
     Factory.$inject = ['$injector', '$q'];
 
     function Factory($injector, $q) {
-        console.log('constructor');
         var error_count = 0;
         var max_error_count = 5;
 
@@ -21,22 +20,19 @@
         /* --- PUBLIC METHODS --- */
 
         function _responseError(response) {
-            console.log('the method');
             // Token has expired or some other Auth error
             if (response.status == 401 && error_count < max_error_count) {
-                console.log('increasing error count');
                 error_count++;
 
                 var AuthService = $injector.get('RRAuthFactory');
                 var $http = $injector.get('$http');
                 var deferred = $q.defer();
 
-                // Create a new session (recover the session)
-                // We use login method that logs the user in using the current credentials and
-                // returns a promise
+                //Attempt to get a new token
                 AuthService.getToken().then(deferred.resolve, deferred.reject);
             
                 // When the session recovered, make the same backend call again and chain the request
+                // if the promise was resolved  
                 return deferred.promise.then(function() {
                     return $http(response.config);
                 });
