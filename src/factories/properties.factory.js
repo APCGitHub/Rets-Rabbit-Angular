@@ -66,7 +66,6 @@
 			.success(function (res){
 				deferred.resolve(res);
 			}).error(function (err){
-				console.log(err);
 				deferred.reject(err);
 			});
 
