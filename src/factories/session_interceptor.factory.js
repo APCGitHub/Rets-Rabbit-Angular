@@ -43,6 +43,7 @@
                 });
             }
             error_count = 0;
+            console.log(response);
             return $q.reject(response);
         }
     }
