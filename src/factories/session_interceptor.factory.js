@@ -3,7 +3,7 @@
 
     angular
         .module('rets-rabbit-angular.factory.session.interceptor', [])
-        .factory('SessionInterceptor', Factory);
+        .factory('SessionInterceptorFactory', Factory);
 
     Factory.$inject = ['$injector', '$q'];
 
