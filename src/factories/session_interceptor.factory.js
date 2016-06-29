@@ -21,6 +21,7 @@
 
         function _responseError(response) {
             var config = response.config.config || {};
+            
             // Token has expired or some other Auth error
             if (!config.ignoreAuth && response.status == 401 && error_count < max_error_count) {
                 error_count++;
