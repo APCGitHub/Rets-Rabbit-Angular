@@ -5,9 +5,9 @@
         .module('rets-rabbit-angular.factory.session.interceptor', [])
         .factory('SessionInterceptorFactory', Factory);
 
-    Factory.$inject = ['$injector', '$q'];
+    Factory.$inject = ['$injector', '$q', '$window'];
 
-    function Factory($injector, $q) {
+    function Factory($injector, $q, $window) {
         var error_count = 0;
         var max_error_count = 5;
 
@@ -40,7 +40,8 @@
                 // When the session recovered, make the same backend call again and chain the request
                 // if the promise was resolved  
                 return deferred.promise.then(function() {
-                    console.log(response.config);
+                    var token = $window.localStorage.getItem('token');
+                    response.config.headers['Authorization'] = 'Bearer ' + token;
                     return $http(response.config);
                 }, function (err) {
                     return $q.reject(response);
