@@ -20,6 +20,9 @@
 			$http({
 				method: 'POST',
 				url: ApiConfig.baseUrl + 'api/oauth/access_token',
+				config: {
+					ignoreAuth: true
+				},
 				data: {
 					client_id: ApiConfig.clientId,
 					client_secret: ApiConfig.clientSecret,

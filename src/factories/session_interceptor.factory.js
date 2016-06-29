@@ -20,8 +20,9 @@
         /* --- PUBLIC METHODS --- */
 
         function _responseError(response) {
+            var config = rejection.config || {};
             // Token has expired or some other Auth error
-            if (response.status == 401 && error_count < max_error_count) {
+            if (!config.ignoreAuth && response.status == 401 && error_count < max_error_count) {
                 error_count++;
 
                 var AuthService = $injector.get('RRAuthFactory');
