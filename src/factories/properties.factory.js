@@ -29,6 +29,7 @@
 				var listing = res.value;
 				deferred.resolve(listing);
 			}).error(function (err){
+				console.log(err);
 				deferred.reject(err);
 			});
 
