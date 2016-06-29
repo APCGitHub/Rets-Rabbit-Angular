@@ -23,7 +23,7 @@
         function _responseError(response) {
             console.log('the method');
             // Token has expired or some other Auth error
-            if (response.status == 401) {
+            if (response.status == 401 && error_count < max_error_count) {
                 console.log('increasing error count');
                 error_count++;
 
@@ -35,19 +35,13 @@
                 // We use login method that logs the user in using the current credentials and
                 // returns a promise
                 AuthService.getToken().then(deferred.resolve, deferred.reject);
-
-                if (error_count >= max_error_count) {
-                    console.log('error_count was too great');
-                    error_count = 0;
-                    return $q.reject(response);
-                } else {
-                    // When the session recovered, make the same backend call again and chain the request
-                    return deferred.promise.then(function() {
-                        error_count = 0;
-                        return $http(response.config);
-                    });
-                }
+            
+                // When the session recovered, make the same backend call again and chain the request
+                return deferred.promise.then(function() {
+                    return $http(response.config);
+                });
             }
+            error_count = 0;
             return $q.reject(response);
         }
     }
