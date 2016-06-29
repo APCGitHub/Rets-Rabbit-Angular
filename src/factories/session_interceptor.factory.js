@@ -39,7 +39,10 @@
                 // When the session recovered, make the same backend call again and chain the request
                 // if the promise was resolved  
                 return deferred.promise.then(function() {
+                    console.log('we did get top');
                     return $http(response.config);
+                }, function () {
+                    console.log('we did get here');
                 });
             }
             error_count = 0;
