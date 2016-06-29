@@ -30,7 +30,11 @@
                 var deferred = $q.defer();
 
                 //Attempt to get a new token
-                AuthService.getToken().then(deferred.resolve, deferred.reject);
+                AuthService.getToken().then(function (res) {
+                    deferred.resolve();
+                }, function (err) {
+                    deferred.reject(err);
+                });
             
                 // When the session recovered, make the same backend call again and chain the request
                 // if the promise was resolved  
