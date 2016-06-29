@@ -31,7 +31,7 @@
 
                 //Attempt to get a new token
                 AuthService.getToken().then(function (res) {
-                    deferred.resolve();
+                    deferred.resolve(res);
                 }, function (err) {
                     deferred.reject(err);
                 });
