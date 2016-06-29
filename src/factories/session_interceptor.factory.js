@@ -39,7 +39,7 @@
                 if (error_count >= max_error_count) {
                     console.log('error_count was too great');
                     error_count = 0;
-                    return deferred.promise;
+                    return $q.reject(response);
                 } else {
                     // When the session recovered, make the same backend call again and chain the request
                     return deferred.promise.then(function() {
