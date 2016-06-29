@@ -8,7 +8,6 @@
     Factory.$inject = ['$injector', '$q'];
 
     function Factory($injector, $q) {
-        console.log('this is the interceptor factory...');
         var error_count = 0;
         var max_error_count = 5;
 
@@ -33,6 +32,7 @@
                 AuthService.getToken().then(deferred.resolve, deferred.reject);
 
                 if (error_count >= max_error_count) {
+                    console.log('error_count was too great');
                     error_count = 0;
                     return deferred.promise;
                 } else {
@@ -41,6 +41,7 @@
                         error_count = 0;
                         return $http(response.config);
                     }, function() {
+                        console.log('increasing error count');
                         error_count++;
                     });
                 }
