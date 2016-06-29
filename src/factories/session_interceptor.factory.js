@@ -21,7 +21,7 @@
 
         function _responseError(response) {
             var config = response.config.config || {};
-            
+
             // Token has expired or some other Auth error
             if (!config.ignoreAuth && response.status == 401 && error_count < max_error_count) {
                 error_count++;
@@ -40,6 +40,7 @@
                 // When the session recovered, make the same backend call again and chain the request
                 // if the promise was resolved  
                 return deferred.promise.then(function() {
+                    console.log(response.config);
                     return $http(response.config);
                 }, function (err) {
                     return $q.reject(response);
