@@ -20,7 +20,7 @@
         /* --- PUBLIC METHODS --- */
 
         function _responseError(response) {
-            var config = response.hasOwnProperty('config') ? response.config || {};
+            var config = response.hasOwnProperty('config') ? response.config : {};
             console.log(config);
             // Token has expired or some other Auth error
             if (!config.ignoreAuth && response.status == 401 && error_count < max_error_count) {
