@@ -11,8 +11,9 @@
 		var config = {
 			baseUrl: 'https://stage.retsrabbit.com/',
 			apiEndPoint: 'api/v2/',
-			clientId: '',
-			clientSecret: ''
+			clientId: 'retsrabbit',
+			clientSecret: 'retsrabbit',
+			storageKey: 'access_token'
 		},
 		provider = {
 			setBaseUrl: function (url){
@@ -32,12 +33,16 @@
 			setClientSecret: function (secret){
 				config.clientSecret = secret;
 			},
+			setStorageKey: function (key){
+				config.storageKey = key;
+			},
 			$get: function () {
 				return {
 					baseUrl: config.baseUrl,
 					apiUrl: config.baseUrl + config.apiEndPoint,
 					clientId: config.clientId,
-					clientSecret: config.clientSecret
+					clientSecret: config.clientSecret,
+					storageKey: config.storageKey
 				}
 			}
 		};

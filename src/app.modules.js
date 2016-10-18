@@ -5,6 +5,7 @@
 		.module('rets-rabbit-angular', [
 			'rets-rabbit-angular.config',
 			'rets-rabbit-angular.factories',
-			'rets-rabbit-angular.providers'
+			'rets-rabbit-angular.providers',
+			'rets-rabbit-angular.services',
 		]);
 })();

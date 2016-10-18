@@ -5,9 +5,9 @@
 		.module('rets-rabbit-angular.factory.auth', [])
 		.factory('RRAuthFactory', Factory);
 
-	Factory.$inject = ['$http', '$q', '$window', 'ApiConfig'];
+	Factory.$inject = ['$http', '$q', '$window', 'ApiConfig', 'KeyStorageService'];
 
-	function Factory($http, $q, $window, ApiConfig) {
+	function Factory($http, $q, $window, ApiConfig, KeyStorageService) {
 		var factory = {
 			getToken: _getToken
 		};
@@ -29,8 +29,8 @@
 					grant_type: 'client_credentials'
 				}
 			}).success(function (res){
-				$window.localStorage.setItem('token', res.access_token);
-				console.log($window.localStorage.getItem('token'));
+				KeyStorageService.saveToken(res.access_token);
+				
 				deferred.resolve(res);
 			}).error(function (err){
 				deferred.reject(err);
