@@ -28,6 +28,7 @@ This factory has one publicly available method: **getToken**
 
 ```javascript
 RRAuthFactory.getToken().then(function (res){
+    //getToken automatically saves the access_token in localStorage
 	var token = res.access_token;
 	//do stuff with token
 }, function (err){
@@ -72,6 +73,8 @@ This provider has several setters which can be used to configure the service ins
 
 * **setClientSecret**: Used to set the client_secret which can be found under the **API** page on the Retsrabbit dashboard
 
+* **setStorageKey**: Use to set the local storage key for the access_token sent back by the server.
+
 An example of using the setters can be seen below.
 
 *Make sure you suffix the provider with the "Provider" keyword when injecting into a config module so that angular knows you are using it as a Provider and not a service/factory.*
@@ -82,6 +85,8 @@ ApiConfigProvider.setBaseUrl("https://api.retsrabbit.com/");
 ApiConfigProvider.setClientId("clientidgoeshere");
 
 ApiConfigProvider.setClientSecret("supersecretpassword");
+
+ApiConfigProvider.setStorageKey("access_token_v1");
 ```
 The provider has several public getters which can be used to get api related information.
 
@@ -89,6 +94,7 @@ The provider has several public getters which can be used to get api related inf
 * **apiUrl**: Returns the base url plus the api endpoint
 * **clientId**: Returns the client_id
 * **clientSecret**: Returns the client_secret
+* **storageKey**: Returns the local storage key for the access token
 
 
 
