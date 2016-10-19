@@ -30,17 +30,30 @@
                 var $http = $injector.get('$http');
                 var deferred = $q.defer();
 
-                //Attempt to get a new token
-                AuthService.getToken().then(function (res) {
-                    deferred.resolve(res);
-                }, function (err) {
-                    deferred.reject(err);
-                });
+                if(config.version == 1){
+                    //Attempt to get a new token
+                    AuthService.getTokenV1().then(function (res) {
+                        deferred.resolve(res);
+                    }, function (err) {
+                        deferred.reject(err);
+                    });
+                }
+
+                if(config.version == 2){
+                    //Attempt to get a new token
+                    AuthService.getTokenV2().then(function (res) {
+                        deferred.resolve(res);
+                    }, function (err) {
+                        deferred.reject(err);
+                    });
+                }
             
                 // When the session recovered, make the same backend call again and chain the request
                 // if the promise was resolved  
                 return deferred.promise.then(function() {
-                    var token = KeyStorageService.getToken();
+                    //TODO: fix this!! we need to check if v1 or v2
+                    console.log(response.config);
+                    var token = '';//KeyStorageService.getToken();
 
                     response.config.headers['Authorization'] = 'Bearer ' + token;
 

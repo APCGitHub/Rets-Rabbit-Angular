@@ -2,12 +2,12 @@
 	'use strict';
 
 	angular
-		.module('rets-rabbit-angular.factory.properties', [])
-		.factory('PropertyFactory', Factory);
+		.module('rets-rabbit-angular.factory.properties.v2', [])
+		.factory('PropertyFactoryV2', Factory);
 
-	Factory.$inject = ['$http', '$q', '$window', 'ApiConfig', 'KeyStorageService'];
+	Factory.$inject = ['$http', '$q', 'ApiConfig', 'KeyStorageService'];
 
-	function Factory($http, $q, $window, ApiConfig, KeyStorageService) {
+	function Factory($http, $q, ApiConfig, KeyStorageService) {
 		var factory = {
 			findOne: _findOne,
 			metadata: _metadata,
@@ -19,10 +19,10 @@
 		function _findOne(id, request){
 			var deferred = $q.defer();
 			
-			$http.get(ApiConfig.apiUrl + 'property(' + id + ')', {
+			$http.get(ApiConfig.v2.apiUrl + 'property(' + id + ')', {
 				params: request,
 				headers: {
-					Authorization: 'Bearer ' + KeyStorageService.getToken()
+					Authorization: 'Bearer ' + KeyStorageService.v2.getToken()
 				}
 			})
 			.success(function (res){
@@ -38,9 +38,9 @@
 		function _metadata() {
 			var deferred = $q.defer();
 
-			$http.get(ApiConfig.apiUrl + 'property/$metadata', {
+			$http.get(ApiConfig.v2.apiUrl + 'property/$metadata', {
 				headers: {
-					Authorization: 'Bearer ' + KeyStorageService.getToken()
+					Authorization: 'Bearer ' + KeyStorageService.v2.getToken()
 				}
 			}).success(function (res){
 				deferred.resolve(res);
@@ -55,10 +55,10 @@
 			var deferred = $q.defer();
 			var encoded_query = encodeURIComponent(query);
 			
-			$http.get(ApiConfig.apiUrl + 'property?' + query, {
+			$http.get(ApiConfig.v2.apiUrl + 'property?' + query, {
 				headers: {
 					Accept: "odata.metadata=full",
-					Authorization: 'Bearer ' + KeyStorageService.getToken()
+					Authorization: 'Bearer ' + KeyStorageService.v2.getToken()
 				}
 			})
 			.success(function (res){

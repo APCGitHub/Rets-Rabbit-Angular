@@ -8,18 +8,34 @@
 	Service.$inject = ['$window', 'ApiConfig'];
 
 	function Service($window, ApiConfig) {
-		this.saveToken = function(token) {
-			var key = ApiConfig.storageKey;
+		this.v1 = {
+			saveToken: function (token){
+				var key = ApiConfig.v1.storageKey;
 
-			$window.localStorage.setItem(key, token);
+				$window.localStorage.setItem(key, token);
+			},
+			getToken: function () {
+				var key = ApiConfig.v1.storageKey;
+
+				var token = $window.localStorage.getItem(key);
+
+				return token;
+			}
 		};
 
-		this.getToken = function () {
-			var key = ApiConfig.storageKey;
+		this.v2 = {
+			saveToken: function (token){
+				var key = ApiConfig.v2.storageKey;
 
-			var token = $window.localStorage.getItem(key);
+				$window.localStorage.setItem(key, token);
+			},
+			getToken: function () {
+				var key = ApiConfig.v2.storageKey;
 
-			return token;
+				var token = $window.localStorage.getItem(key);
+
+				return token;
+			}
 		};
 	}
 })();
