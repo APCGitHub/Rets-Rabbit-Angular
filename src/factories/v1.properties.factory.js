@@ -13,7 +13,8 @@
     function Factory ($q, $http, ApiConfig, KeyStorageService) {
         var factory = {
             search: _search,
-            metadata: _metadata
+            metadata: _metadata,
+            servers: _servers
         };
 
         return factory;
@@ -44,6 +45,22 @@
             }).success(function (res){
                 deferred.resolve(res);
             }).error(function (res) {
+                deferred.reject(res);
+            });
+
+            return deferred.promise;
+        }
+
+        function _servers() {
+            var deferred = $q.defer();
+
+            $http.get(ApiConfig.v1.apiUrl + 'server', {
+                headers: {
+                    Authorization: 'Bearer ' + KeyStorageService.v1.getToken()
+                }
+            }).success(function (res){
+                deferred.resolve(res);
+            }).error(function (res){
                 deferred.reject(res);
             });
 
