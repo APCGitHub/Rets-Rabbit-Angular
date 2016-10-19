@@ -46,18 +46,18 @@
 
 			$http({
 				method: 'POST',
-				url: ApiConfig.v1.baseUrl + 'api/oauth/access_token',
+				url: ApiConfig.v2.baseUrl + 'api/oauth/access_token',
 				config: {
 					ignoreAuth: true,
 					version: 2
 				},
 				data: {
-					client_id: ApiConfig.v1.clientId,
-					client_secret: ApiConfig.v1.clientSecret,
+					client_id: ApiConfig.v2.clientId,
+					client_secret: ApiConfig.v2.clientSecret,
 					grant_type: 'client_credentials'
 				}
 			}).success(function (res){
-				KeyStorageService.v1.saveToken(res.access_token);
+				KeyStorageService.v2.saveToken(res.access_token);
 
 				deferred.resolve(res);
 			}).error(function (err){
