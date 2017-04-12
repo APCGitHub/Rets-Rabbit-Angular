@@ -26,9 +26,9 @@
                 headers: {
                     Authorization: 'Bearer ' + KeyStorageService.v1.getToken()
                 }
-            }).success(function (res){
+            }).then(function (res){
                 deferred.resolve(res);
-            }).error(function (res){
+            }, function (res){
                 deferred.reject(res);
             });
 
@@ -42,9 +42,9 @@
                 headers: {
                     Authorization: 'Bearer ' + KeyStorageService.v1.getToken()
                 }
-            }).success(function (res){
+            }).then(function (res){
                 deferred.resolve(res);
-            }).error(function (res) {
+            }, function (res) {
                 deferred.reject(res);
             });
 
@@ -58,9 +58,9 @@
                 headers: {
                     Authorization: 'Bearer ' + KeyStorageService.v1.getToken()
                 }
-            }).success(function (res){
+            }).then(function (res){
                 deferred.resolve(res);
-            }).error(function (res){
+            }, function (res){
                 deferred.reject(res);
             });
 

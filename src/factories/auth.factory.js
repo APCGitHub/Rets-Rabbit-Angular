@@ -33,11 +33,11 @@
 				headers: {
 					'Content-Type': 'application/x-www-form-urlencoded'
 				},
-			}).success(function (res){
+			}).then(function (res){
 				KeyStorageService.v1.saveToken(res.access_token);
 
 				deferred.resolve(res);
-			}).error(function (err){
+			}, function (err){
 				deferred.reject(err);
 			});
 
@@ -62,11 +62,11 @@
 					client_secret: ApiConfig.v2.clientSecret,
 					grant_type: 'client_credentials'
 				})
-			}).success(function (res){
+			}).then(function (res){
 				KeyStorageService.v2.saveToken(res.access_token);
 
 				deferred.resolve(res);
-			}).error(function (err){
+			}, function (err){
 				deferred.reject(err);
 			});
 
