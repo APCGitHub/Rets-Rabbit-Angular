@@ -62,7 +62,7 @@
 				}
 			})
 			.then(function (res){
-				deferred.resolve(res);
+				deferred.resolve(res.data.access_token);
 			}, function (err){
 				deferred.reject(err);
 			});
