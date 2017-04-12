@@ -63,7 +63,7 @@
 					grant_type: 'client_credentials'
 				})
 			}).then(function (res){
-				KeyStorageService.v2.saveToken(res.access_token);
+				KeyStorageService.v2.saveToken(res.data.access_token);
 
 				deferred.resolve(res);
 			}, function (err){
